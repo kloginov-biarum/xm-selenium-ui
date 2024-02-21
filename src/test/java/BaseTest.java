@@ -12,13 +12,13 @@ public class BaseTest {
     @BeforeEach
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "/Users/ergrevegvrg/chromedriver");
-        Dimension dimension = new Dimension(1024, 768);
-       // Dimension dimension2 = new Dimension(800, 600);
+        //Dimension dimension = new Dimension(1024, 768);
+        Dimension dimension2 = new Dimension(800, 600);
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
-        driver.manage().window().setSize(dimension);
-        //driver.manage().window().maximize();
+        driver.manage().window().setSize(dimension2);
+       // driver.manage().window().maximize();
         driver.get(BASE_URL);
     }
 

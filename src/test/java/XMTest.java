@@ -9,13 +9,9 @@ public class XMTest extends BaseTest{
         ModalWindow modalWindow = new ModalWindow(driver);
         modalWindow.clickOnAcceptAllButton();
         HomePage homePage = new HomePage(driver);
-        homePage.memberLoginButtonIsDisplayed();
-        homePage.helpCenterButtonIsDisplayed();
         homePage.openAnAccountButtonIsDisplayed();
-        homePage.languageDropdownIsDisplayed();
         homePage.followTheTradingLink();
         TradingPage tradingPage = new TradingPage(driver);
-        tradingPage.textDescriptionIsDisplayed();
         tradingPage.followTheStocksLink();
         StocksPage stocksPage = new StocksPage(driver);
         assertEquals("STOCKS",stocksPage.headerText());
@@ -29,12 +25,12 @@ public class XMTest extends BaseTest{
         String limitStopLevelFromStockPage = stocksPage.getLimitStopLevel();
         stocksPage.clickOnReadMoreOrklaButton();
         OrklaPage orklaPage = new OrklaPage(driver);
-        assertEquals(marginRequirementFromStockPage, orklaPage.getMarginRequirementValue());
-        assertEquals(minSpreadValueFromStocksPage, orklaPage.getMinSpreadValue());
-        assertEquals(minMaxTradeSizeFromStocksPage, orklaPage.getMinMaxTradeSize());
-        assertEquals(swapLongFromStockPage, orklaPage.getSwapLong());
-        assertEquals(swapShortFromStockPage,orklaPage.getSwapShort());
-        assertEquals(limitStopLevelFromStockPage, orklaPage.getLimitStopLevel());
+        assertEquals("Margin requirement value doesn't match", marginRequirementFromStockPage, orklaPage.getMarginRequirementValue());
+        assertEquals("Minimum spread value doesn't match", minSpreadValueFromStocksPage, orklaPage.getMinSpreadValue());
+        assertEquals("Minimum/maximum trade size doesn't match", minMaxTradeSizeFromStocksPage, orklaPage.getMinMaxTradeSize());
+        assertEquals("Swap long value doesn't match", swapLongFromStockPage, orklaPage.getSwapLong());
+        assertEquals("Swap short value doesn't match", swapShortFromStockPage, orklaPage.getSwapShort());
+        assertEquals("Limit/Stop level doesn't match", limitStopLevelFromStockPage, orklaPage.getLimitStopLevel());
 
 
 

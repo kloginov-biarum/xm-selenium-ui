@@ -1,3 +1,4 @@
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,12 +13,19 @@ public class TradingPage extends BasePage{
 
     @FindBy(css = ".menu-stocks a")
     private WebElement stocksLink;
+    @FindBy(css = ".navbar-nav__list [href=\"https://www.xm.com/stocks\"]")
+    private WebElement stocksLinkFromLeftNavMenu;
     public void textDescriptionIsDisplayed(){
         elementIsDisplayed(textDescription, 5);
     }
 
     public void followTheStocksLink(){
-        clickOnTheElement(stocksLink);
+       try {
+           clickOnTheElement(stocksLink);
+       }
+       catch (TimeoutException e){
+           clickOnTheElement(stocksLinkFromLeftNavMenu);
+       }
     }
 
 
